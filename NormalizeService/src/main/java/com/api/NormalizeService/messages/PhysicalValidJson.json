@@ -1,0 +1,55 @@
+{
+  "imei" : "12a25qwe-7c5d-4a75-afd2-2a180752e743",
+  "phoneModel": "iPhone 5",
+  "purchaseType": "Physical Store",
+  "eventType": "New",
+  "buyerInfo": {
+    "buyerNumber": 5000000,
+    "buyerName": "Jane Smith",
+    "buyerContact": {
+      "email": "jane.smith@example.com",
+      "phone": "555-4321"
+    },
+    "billingAddress": {
+      "street": "456 Tech Blvd",
+      "city": "Digital City",
+      "state": "CA",
+      "zipCode": "54321"
+    }
+  },
+  "sellerInfo": {
+    "sellerNumber": 5000001,
+    "sellerName": "TechCo Online Store","sellerContact": {
+      "email": "online@store.com",
+      "phone": "555-6789"
+    }
+  },
+  "physicalData": {
+    "storeName": "Tech Store",
+    "storeId": "TS001",
+    "price": 123
+
+  },
+
+  "specs": {
+
+    "screenSize": 3.5,
+    "ram": "512 MB",
+    "cpu": "Apple A4",
+    "storage": "16 GB",
+    "camera": {
+      "main": "5 MP",
+      "front": "VGA"
+    },
+    "battery": "1420 mAh"
+  },
+  "transactionDetails": {
+    "transactionId": "TXN003",
+    "purchaseDate": "2024-02-18T11:15:00",
+    "status": "Completed",
+    "paymentMethod": "Cash",
+    "amount": 199.99,
+    "currency": "USD",
+    "inStoreExperience": "Friendly staff, quick service."
+  }
+}

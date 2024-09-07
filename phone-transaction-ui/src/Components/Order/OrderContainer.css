@@ -1,0 +1,9 @@
+.ordercontainer_tile{
+    font-size: 30px;
+    font-weight: 500;
+}
+.ordercontainer_container{
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+}

@@ -1,0 +1,34 @@
+package rules
+
+global java.util.ArrayList pendingResults
+global java.util.ArrayList ineligibleResults
+
+import com.api.ManagerService.model.ThirdPartyMessage.PhysicalConditionMessage.PhysicalConditionMessage
+import com.api.ManagerService.model.ThirdPartyMessage.PhysicalConditionMessage.PhysicalCondition
+
+rule "Screen Health Rule"
+    when
+        $physical_condition_message : PhysicalConditionMessage($physical_condition : PhysicalCondition)
+        PhysicalCondition(screenHealth == "Bad") from $physical_condition
+    then
+        String result = "Screen Health is Ineligible";
+        ineligibleResults.add(result);
+end
+
+rule "Battery Health Rule"
+    when
+        $physical_condition_message : PhysicalConditionMessage($physical_condition : PhysicalCondition)
+        PhysicalCondition($physical_condition.getBatteryHealthNumber < 70) from $physical_condition
+    then
+        String result = "Battery Health is Ineligible";
+        ineligibleResults.add(result);
+end
+
+rule "External Damage Rule"
+    when
+        $physical_condition_message : PhysicalConditionMessage($physical_condition : PhysicalCondition)
+        PhysicalCondition(externalDamage == "true") from $physical_condition
+    then
+        String result = "External Damage is Ineligible";
+        ineligibleResults.add(result);
+end

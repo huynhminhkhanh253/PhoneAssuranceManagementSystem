@@ -1,0 +1,58 @@
+{
+  "imei" : "70a25cd6-7c5d-4a75-afd2-2a180752e749",
+  "phoneModel": "iPhone 4",
+  "purchaseType": "Online",
+  "eventType": "New",
+  "buyerInfo": {
+    "buyerNumber": 5000000,
+    "buyerName": "Jane Smith",
+    "buyerContact": {
+      "email": "jane.smith@example.com",
+      "phone": "555-4321"
+    },
+    "billingAddress": {
+      "street": "456 Tech Blvd",
+      "city": "Digital City",
+      "state": "CA",
+      "zipCode": "54321"
+    }
+  },
+  "sellerInfo": {
+    "sellerNumber": 5000001,
+    "sellerName": "TechCo Online Store",
+    "sellerContact": {
+      "email": "online@store.com",
+      "phone": "555-6789"
+    }
+  },
+  "onlineData": {
+    "price": 199.99,
+    "historyID": "b154e63e-ea0f-4e36-b809-4ff63c929564",
+    "channel": "Lazada"
+  },
+  "specs": {
+    "screenSize": 3.5,
+    "ram": "512 MB",
+    "cpu": "Apple A4",
+    "storage": "16 GB",
+    "camera": {
+      "main": "5 MP",
+      "front": "VGA"
+    },
+    "battery": "1420 mAh"
+  },
+  "transactionDetails": {
+    "transactionId": "TXN002",
+    "purchaseDate": "2024-02-17T15:45:00",
+    "status": "Pending",
+    "paymentMethod": "PayPal",
+    "amount": 199.99,
+    "currency": "USD"
+  },
+  "voucherInfo": {
+    "voucherCode": "ONLINEVCH001",
+    "voucherId": "b154e63e-ea0f-4e36-b809-4ff63c929564",
+    "discountPercentage": 10,
+    "validUntil": "2024-03-15"
+  }
+}

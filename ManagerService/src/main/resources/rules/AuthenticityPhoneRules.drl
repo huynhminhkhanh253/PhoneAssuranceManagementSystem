@@ -1,0 +1,18 @@
+package rules
+
+// Define global variable
+global java.util.ArrayList pendingResults
+global java.util.ArrayList ineligibleResults
+
+import com.api.ManagerService.model.ThirdPartyMessage.AuthenticityMessage.AuthenticityMessage
+import com.api.ManagerService.model.ThirdPartyMessage.AuthenticityMessage.Authenticity
+
+rule "Authenticity Black List"
+    when
+        $authenticity_message : AuthenticityMessage($authenticity : Authenticity)
+        Authenticity(imeiStatus == "Blacklisted") from $authenticity
+    then
+        String result = "Phone imei is blacklisted";
+        ineligibleResults.add(result);
+end
+

@@ -1,0 +1,63 @@
+<PartnerData>
+    <imei>70a25cd6-7c5d-4a75-afd2-2a180752e748</imei>
+    <phoneModel>iPhone 6</phoneModel>
+    <purchaseType>Partner Store</purchaseType>
+    <eventType>NewEvent</eventType>
+    <buyerInfo>
+        <buyerName>John Doe</buyerName>
+        <buyerNumber>5000000</buyerNumber>
+        <buyerContact>
+            <email>john.doe@example.com</email>
+            <phone>555-1234</phone>
+        </buyerContact>
+        <billingAddress>
+            <street>123 Main St</street>
+            <city>Buyer City</city>
+            <state>CA</state>
+            <zipCode>54321</zipCode>
+        </billingAddress>
+    </buyerInfo>
+    <sellerInfo>
+        <sellerName>TechCo Store</sellerName>
+        <sellerContact>
+            <email>store@example.com</email>
+            <phone>555-5678</phone>
+        </sellerContact>
+        <storeLocation>
+            <city>Innovation City</city>
+            <state>CA</state>
+            <zipCode>12345</zipCode>
+        </storeLocation>
+    </sellerInfo>
+    <partnerData>
+        <partnerName>TechCo</partnerName>
+        <partnerInfo>
+            <partnerId>PC001</partnerId>
+            <partnerLocation>
+                <city>Innovation City</city>
+                <state>CA</state>
+                <zipCode>12345</zipCode>
+            </partnerLocation>
+        </partnerInfo>
+        <exclusiveOffer>Get a free accessory kit with every purchase!</exclusiveOffer>
+    </partnerData>
+    <specs>
+        <screenSize>3.5</screenSize>
+        <ram>512 MB</ram>
+        <cpu>Apple A4</cpu>
+        <storage>16 GB</storage>
+        <camera>
+            <main>5 MP</main>
+            <front>VGA</front>
+        </camera>
+        <battery>1420 mAh</battery>
+    </specs>
+    <transactionDetails>
+        <transactionId>TXN004</transactionId>
+        <purchaseDate>2024-02-20T09:30:00</purchaseDate>
+        <status>Shipped</status>
+        <paymentMethod>Credit Card</paymentMethod>
+        <amount>199.99</amount>
+        <currency>USD</currency>
+    </transactionDetails>
+</PartnerData>

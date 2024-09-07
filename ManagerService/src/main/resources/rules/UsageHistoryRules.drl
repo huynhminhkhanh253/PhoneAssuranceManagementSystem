@@ -1,0 +1,45 @@
+package rules
+
+// Define global variable
+global java.util.ArrayList pendingResults
+global java.util.ArrayList ineligibleResults
+
+import com.api.ManagerService.model.ThirdPartyMessage.HistoryUsageMessage.HistoryUsageMessage
+import com.api.ManagerService.model.ThirdPartyMessage.HistoryUsageMessage.UsageHistory
+
+rule "Operating System Version"
+    when
+        $history_usage_message : HistoryUsageMessage($usage_histories : UsageHistories)
+        $usage_history : UsageHistory(event == "Operating System Update", $usage_history.getOsVersion < 10) from $usage_histories
+    then
+        String result = "OS is ineligible (Os version < 10)";
+        ineligibleResults.add(result);
+end
+
+rule "Rooted/Jail broken Status"
+    when
+        $history_usage_message : HistoryUsageMessage($usage_histories : UsageHistories)
+        $usage_history : UsageHistory(event == "Jail Break", $usage_history.getDetails == "True") from $usage_histories
+    then
+       String result = "Jail break status ineligible (jail broken)";
+       ineligibleResults.add(result);
+end
+
+rule "Network Status"
+    when
+        $history_usage_message : HistoryUsageMessage($usage_histories : UsageHistories)
+        $usage_history : UsageHistory(event == "Network Unlock", $usage_history.getDetails == "False") from $usage_histories
+    then
+       String result = "Network status is ineligible (network is not unlocked)";
+       ineligibleResults.add(result);
+end
+
+rule "Pending history result"
+    when
+        $history_usage_message : HistoryUsageMessage($usage_histories : UsageHistories)
+        $usage_history : UsageHistory(event == "Jail Break", $usage_history.getDetails == "Pending investigate") from $usage_histories
+    then
+       String result = "Pending investigate jail break status";
+       pendingResults.add(result);
+end
+

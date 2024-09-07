@@ -1,0 +1,38 @@
+
+.blur_background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://ik.imagekit.io/cx85rn0p5/8bhcnhqa.png?updatedAt=1716192969700'); /* Replace with the path to your image */
+    background-size: cover;
+    filter: blur(2px); /* Adjust the blur intensity as needed */
+    z-index: -1; /* Ensure the blurred background is behind other content */
+}
+
+.home_container{
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    height: 100vh;  
+}
+.order_container{
+    transform: translate(10px, 10px);
+    z-index: 2;
+}
+
+.vieworder_button {
+    background-color: #ffc80a;
+    border-color: #000000;
+    text-align: center;
+    box-shadow: #ffc80a 0px 1px 10px 0px;
+    color: #3e3b3a;
+    font-family: DIN;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 19.6px;
+    text-transform: uppercase;
+    padding: 9px;
+}
+

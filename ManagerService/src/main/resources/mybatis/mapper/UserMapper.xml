@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.api.ManagerService.mapper.UserMapper">
+
+<!--    <resultMap id="UserResultMap" type="User">
+        <result column="user_name"         jdbcType="VARCHAR" property="userName" />
+        <result column="password"         jdbcType="VARCHAR" property="password" />
+    </resultMap>-->
+    <select id="findByUsername" resultType="User">
+        SELECT
+            user_name as userName,
+            password as password
+        FROM user WHERE user_name = #{userName}
+    </select>
+    <insert id="addToDb" parameterType="Order">
+        insert into `order`(imei, phone_model, source, price, seller_number, order_status, ineligible_reason, pending_reason, specs_id)
+        values (#{imei},#{phone_model},#{source},#{price},#{seller_number},#{order_status}, #{ineligible_reason}, #{pending_reason}, #{specs_id})
+    </insert>
+    <insert id="save" parameterType="User">
+        insert into user(user_name, password)
+        values (#{userName}, #{password})
+    </insert>
+
+</mapper>
+
+

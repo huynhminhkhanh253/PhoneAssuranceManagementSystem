@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.api.ManagerService.mapper.OrderMapper">
+
+    <resultMap id="OrderResultMap" type="order">
+        <result column="id"         jdbcType="VARCHAR" property="id" />
+        <result column="imei"         jdbcType="VARCHAR" property="imei" />
+        <result column="phone_model"          jdbcType="VARCHAR" property="phone_model" />
+        <result column="source"         jdbcType="VARCHAR" property="source" />
+        <result column="order_status"         jdbcType="VARCHAR" property="order_status" />
+        <result column="ineligible_reason"         jdbcType="VARCHAR" property="ineligible_reason" />
+        <result column="pending_reason"         jdbcType="VARCHAR" property="pending_reason" />
+        <result column="price"         jdbcType="VARCHAR" property="price" />
+        <result column="buyer_number"         jdbcType="VARCHAR" property="buyer_number" />
+        <result column="seller_number"         jdbcType="VARCHAR" property="seller_number" />
+        <result column="specs_id"         jdbcType="VARCHAR" property="specs_id" />
+    </resultMap>
+    <select id="getAllOrder" resultMap="OrderResultMap">
+        SELECT
+            id,
+            imei,
+            phone_model,
+            source,
+            order_status,
+            ineligible_reason,
+            pending_reason,
+            price,
+            buyer_number,
+            seller_number,
+            specs_id
+        FROM `order`
+        LIMIT #{offset}, #{limit}
+    </select>
+    <insert id="addToDb" parameterType="Order">
+        insert into `order`(imei, phone_model, source, price, buyer_number, seller_number, order_status, ineligible_reason, pending_reason, specs_id)
+        values (#{imei},
+        #{phone_model},
+        #{source},#{price},
+        #{buyer_number},
+        #{seller_number},
+        #{order_status},
+        COALESCE(#{ineligible_reason}, DEFAULT(ineligible_reason)),
+        COALESCE(#{pending_reason}, DEFAULT(pending_reason)),
+        #{specs_id})
+    </insert>
+    <update id="updateToDb" parameterType="Order">
+        UPDATE `order`
+        <set>
+            <if test="ineligible_reason != null">ineligible_reason = #{ineligible_reason},</if>
+            <if test="pending_reason != null">pending_reason = #{pending_reason},</if>
+        </set>
+        WHERE imei = #{imei}
+    </update>
+
+    <insert id="addSpecs" parameterType="Specs" keyProperty="id" useGeneratedKeys="true">
+        insert into specs(ram, screen_size, cpu, storage, camera_main, camera_front)
+        values (#{ram}, #{screenSize}, #{cpu}, #{storage}, #{camera_main}, #{camera_front})
+    </insert>
+    <select id="getOrderByImei" parameterType="String" resultMap="OrderResultMap">
+        SELECT
+            id,
+            imei,
+            phone_model,
+            source,
+            order_status,
+            ineligible_reason,
+            price,
+            buyer_number,
+            seller_number,
+            specs_id
+        FROM `order`
+        WHERE imei = #{imei}
+    </select>
+
+</mapper>
+
+
