@@ -1,0 +1,70 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.5'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.api'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-activemq'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//implementation group: 'org.apache.camel.springboot', name: 'camel-core-starter', version: '4.5.0'
+	implementation group: 'org.apache.camel.springboot', name: 'camel-core-starter', version: '4.6.0'
+	//implementation group: 'org.apache.camel.springboot', name: 'camel-spring-boot-starter', version: '4.2.0'
+	implementation group: 'org.apache.camel.springboot', name: 'camel-spring-boot-starter', version: '4.6.0'
+	implementation group: 'org.apache.camel', name: 'camel-activemq', version: '4.2.0'
+	implementation group: 'org.apache.camel', name: 'camel-core-languages', version: '4.5.0'
+	implementation group: 'org.apache.activemq', name: 'activemq-broker', version: '5.18.2'
+	implementation 'org.flywaydb:flyway-core'
+	implementation 'org.flywaydb:flyway-mysql'
+	compileOnly 'org.projectlombok:lombok'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.2.1'
+	implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '3.0.3'
+	implementation group: 'org.apache.activemq', name: 'activemq-pool', version: '5.18.4'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation group: 'org.apache.camel.springboot', name: 'camel-jsonpath-starter', version: '4.5.0'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+	implementation group: 'com.jayway.jsonpath', name: 'json-path', version: '2.9.0'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '6.2.1'
+	testImplementation 'org.springframework.security:spring-security-test'
+	implementation group: 'org.json', name: 'json', version: '20230227'
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+	implementation group: 'com.nimbusds', name: 'nimbus-jose-jwt', version: '4.3.1'
+	testImplementation group: 'org.apache.camel', name: 'camel-test-spring-junit5', version: '4.0.0'
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '4.1.0'
+	implementation 'org.kie:kie-spring:7.73.0.Final' // Use the latest version available
+	implementation 'org.kie:kie-api:7.73.0.Final'
+	implementation 'org.drools:drools-core:7.73.0.Final'
+	implementation 'org.drools:drools-compiler:7.73.0.Final'
+	implementation 'org.drools:drools-decisiontables:7.73.0.Final'
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.2.0'
+	implementation group: 'org.jeasy', name: 'easy-rules-core', version: '4.1.0'
+	implementation group: 'org.reflections', name: 'reflections', version: '0.10.2'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

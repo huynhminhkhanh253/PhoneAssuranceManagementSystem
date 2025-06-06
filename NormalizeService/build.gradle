@@ -1,0 +1,54 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.5'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.api'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-activemq'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation group: 'org.apache.camel.springboot', name: 'camel-core-starter', version: '4.5.0'
+	implementation group: 'org.apache.camel.springboot', name: 'camel-spring-boot-starter', version: '4.2.0'
+	implementation group: 'org.apache.camel', name: 'camel-activemq', version: '4.2.0'
+	implementation group: 'org.apache.activemq', name: 'activemq-broker', version: '5.18.2'
+	implementation 'org.flywaydb:flyway-core'
+	implementation 'org.flywaydb:flyway-mysql'
+	compileOnly 'org.projectlombok:lombok'
+	implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '3.0.3'
+	implementation group: 'org.apache.activemq', name: 'activemq-pool', version: '5.18.4'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation('com.github.openjson:openjson:1.0.12')
+	testImplementation 'org.springframework.security:spring-security-test'
+	implementation group: 'org.json', name: 'json', version: '20230227'
+	testImplementation group: 'org.apache.camel', name: 'camel-test-spring-junit5', version: '4.0.0'
+
+	configurations.all {
+		exclude group: 'org.json', module: 'json'
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
