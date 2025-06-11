@@ -70,6 +70,7 @@
             specs_id
         FROM `order`
         WHERE imei = #{imei}
+        LIMIT 1
     </select>
 
 </mapper>

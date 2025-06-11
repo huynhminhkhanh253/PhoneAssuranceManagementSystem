@@ -18,23 +18,30 @@ public class ManagerServiceRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         // Concurrency processing
-        from("activemq:guarantee-event-queue")
-                //.multicast()
-                //.synchronous()
+        from("activemq:guarantee-event-queue?concurrentConsumers=5&maxConcurrentConsumers=20")
+                .multicast()
+                .parallelProcessing()
                 .to("direct:ineligibleProcessor")
                     .choice()
                         .when().method(conditionBean, "evaluateCondition")
                             .to("direct:pendingProcessor")
                         .otherwise()
-                        //more processor ...
                 .end();
 
         from("direct:ineligibleProcessor")
+                .threads()
+                    .poolSize(10)
+                    .maxPoolSize(30)
+                    .maxQueueSize(1000)
                 .process(ineligibleRulesProcessor)
                 //.to("${body.nextRoute}")
                 .log("${body}");
 
         from("direct:pendingProcessor")
+                .threads()
+                    .poolSize(10)
+                    .maxPoolSize(30)
+                    .maxQueueSize(1000)
                 .process(pendingRulesProcessor)
                 // reset bean state
                 .bean(conditionBean, "setState(false)")

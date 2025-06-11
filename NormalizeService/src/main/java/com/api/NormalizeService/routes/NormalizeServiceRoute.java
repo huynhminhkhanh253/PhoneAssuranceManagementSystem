@@ -20,18 +20,30 @@ public class NormalizeServiceRoute extends RouteBuilder {
         //queue input
         //transformation
         //database output
-        from("activemq:online-queue")
+        from("activemq:online-queue?concurrentConsumers=10&maxConcurrentConsumers=30")
                 .routeId("online-queue")
+                .threads()
+                    .poolSize(10)
+                    .maxPoolSize(30)
+                    .maxQueueSize(1000)
                 .process(onlineMessageProcessor)
                 .log("${body}")
                 .to("activemq:queue:guarantee-event-queue");
         from("activemq:physical-queue")
                 .routeId("physical-queue")
+                .threads()
+                    .poolSize(10)
+                    .maxPoolSize(30)
+                    .maxQueueSize(1000)
                 .process(physicalMessageProcessor)
                 .log("${body}")
                 .to("activemq:queue:guarantee-event-queue");
         from("activemq:partner-queue")
                 .routeId("partner-queue")
+                .threads()
+                    .poolSize(10)
+                    .maxPoolSize(30)
+                    .maxQueueSize(1000)
                 .process(partnerMessageProcessor)
                 .log("${body}")
                 .to("activemq:queue:guarantee-event-queue");

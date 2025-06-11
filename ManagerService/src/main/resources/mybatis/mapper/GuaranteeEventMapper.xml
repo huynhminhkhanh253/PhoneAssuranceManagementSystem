@@ -10,6 +10,7 @@
         imei as imei,
         raw_message as rawMessage
         FROM guarantee_event where imei = #{imei}
+        LIMIT 1
     </select>
 </mapper>
 
